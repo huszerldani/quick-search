@@ -1,0 +1,16 @@
+{
+  "name": "quick-search",
+  "version": "0.1.0",
+  "description": "Quick search app",
+  "main": "main.js",
+  "scripts": {
+    "start": "electron ."
+  },
+  "repository": "https://github.com/electron/electron-quick-start",
+  "keywords": [],
+  "author": "pinasen",
+  "license": "CC0-1.0",
+  "devDependencies": {
+    "electron": "^19.0.8"
+  }
+}
