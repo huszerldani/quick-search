@@ -4,17 +4,18 @@ const path = require('path')
 let mainWindow;
 
 function createWindow () {
-
   mainWindow = new BrowserWindow({
     autoHideMenuBar: true,
     width: 1200,
     height: 800,
+    alwaysOnTop: true,
+    frame: false,
     webPreferences: {
       preload: path.join(__dirname, 'preload.js')
     }
   })
 
-  mainWindow.loadFile('index.html')
+  mainWindow.loadURL('https://google.com')
 }
 
 let tray = null
@@ -48,15 +49,19 @@ app.whenReady().then(() => {
   })
 
   const ret = globalShortcut.register('CommandOrControl+L', () => {
-    openOrShow()
+    openOrShow(true)
   })
 })
 
-function openOrShow() {
+function openOrShow(closeIfOpened) {
   if (BrowserWindow.getAllWindows().length === 0) {
     createWindow()
   } else {
-    mainWindow.show()
+    if (mainWindow.isMaximized()) {
+      mainWindow.hide()
+    } else {
+      mainWindow.show()
+    }
   }
 }
 
