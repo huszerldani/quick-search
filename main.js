@@ -56,10 +56,10 @@ function openOrShow(closeIfOpened) {
   if (BrowserWindow.getAllWindows().length === 0) {
     createWindow()
   } else {
-    if (mainWindow.isMaximized()) {
-      mainWindow.hide()
-    } else {
+    if (mainWindow.isMinimized()) {
       mainWindow.show()
+    } else {
+      mainWindow.minimize()
     }
   }
 }
